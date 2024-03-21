@@ -25,22 +25,22 @@ helm template chaos-mesh helm/chaos-mesh --namespace=chaos-mesh \
       --set chaosDaemon.mtls.enabled=false \
       --set dashboard.securityMode=false > ${tmp_file}
 
-sed -i.bak '/helm/d' $tmp_file
-sed -i.bak '/Helm/d' $tmp_file
-sed -i.bak 's/rollme:.*/rollme: \"install.sh\"/g' $tmp_file
-sed -i.bak 's/ca.crt:.*/ca.crt: \"\$\{CA_BUNDLE\}\"/g' $tmp_file
-sed -i.bak 's/tls.crt:.*/tls.crt: \"\$\{TLS_CRT\}\"/g' $tmp_file
-sed -i.bak 's/tls.key:.*/tls.key: \"\$\{TLS_KEY\}\"/g' $tmp_file
-sed -i.bak 's/caBundle:.*/caBundle: \"\$\{CA_BUNDLE\}\"/g' $tmp_file
-sed -i.bak 's/\/host-run\/docker.sock/\/host-run\/$\{socketName\}/g' $tmp_file
-sed -i.bak 's/path: \/var\/run/path: \$\{socketDir\}/g' $tmp_file
-sed -i.bak 's/- docker/- $\{runtime\}/g' $tmp_file
-sed -i.bak 's/hostNetwork: true/hostNetwork: \$\{host_network\}/g' $tmp_file
-sed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-mesh:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-mesh:\$\{VERSION_TAG\}/g' $tmp_file
-sed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-daemon:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-daemon:\$\{VERSION_TAG\}/g' $tmp_file
-sed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-dashboard:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-dashboard:\$\{VERSION_TAG\}/g' $tmp_file
-sed -i.bak 's/value: UTC/value: \$\{timezone\}/g' $tmp_file
-sed -i.bak 's/app.kubernetes.io\/version: 0.0.0/app.kubernetes.io\/version: $\{VERSION_TAG##v\}/g' $tmp_file
+gsed -i.bak '/helm/d' $tmp_file
+gsed -i.bak '/Helm/d' $tmp_file
+gsed -i.bak 's/rollme:.*/rollme: \"install.sh\"/g' $tmp_file
+gsed -i.bak 's/ca.crt:.*/ca.crt: \"\$\{CA_BUNDLE\}\"/g' $tmp_file
+gsed -i.bak 's/tls.crt:.*/tls.crt: \"\$\{TLS_CRT\}\"/g' $tmp_file
+gsed -i.bak 's/tls.key:.*/tls.key: \"\$\{TLS_KEY\}\"/g' $tmp_file
+gsed -i.bak 's/caBundle:.*/caBundle: \"\$\{CA_BUNDLE\}\"/g' $tmp_file
+gsed -i.bak 's/\/host-run\/docker.sock/\/host-run\/$\{socketName\}/g' $tmp_file
+gsed -i.bak 's/path: \/var\/run/path: \$\{socketDir\}/g' $tmp_file
+gsed -i.bak 's/- docker/- $\{runtime\}/g' $tmp_file
+gsed -i.bak 's/hostNetwork: true/hostNetwork: \$\{host_network\}/g' $tmp_file
+gsed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-mesh:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-mesh:\$\{VERSION_TAG\}/g' $tmp_file
+gsed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-daemon:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-daemon:\$\{VERSION_TAG\}/g' $tmp_file
+gsed -i.bak 's/ghcr.io\/chaos-mesh\/chaos-dashboard:.*/\${IMAGE_REGISTRY_PREFIX}\/chaos-mesh\/chaos-dashboard:\$\{VERSION_TAG\}/g' $tmp_file
+gsed -i.bak 's/value: UTC/value: \$\{timezone\}/g' $tmp_file
+gsed -i.bak 's/app.kubernetes.io\/version: 0.0.0/app.kubernetes.io\/version: $\{VERSION_TAG##v\}/g' $tmp_file
 
 mv $tmp_file $tmp_file.bak
 

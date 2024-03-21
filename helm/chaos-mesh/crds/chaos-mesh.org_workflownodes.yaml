@@ -1817,6 +1817,50 @@ spec:
                 - mode
                 - selector
                 type: object
+              openstackChaos:
+                description: OpenStackChaosSpec is the content of the specification
+                  for an OpenStackChaos
+                properties:
+                  action:
+                    description: 'Action defines the specific OpenStack chaos action.
+                      Supported action: vm-stop / vm-restart / volume-detach Default
+                      action: vm-stop'
+                    enum:
+                    - vm-stop
+                    - vm-restart
+                    - volume-detach
+                    type: string
+                  authURL:
+                    description: AuthURL defines the URL for authentication in OpenStack.
+                    type: string
+                  duration:
+                    description: Duration represents the duration of the chaos action.
+                    type: string
+                  remoteCluster:
+                    description: RemoteCluster represents the remote cluster where
+                      the chaos will be deployed
+                    type: string
+                  secretName:
+                    description: SecretName defines the name of kubernetes secret.
+                      It is used for OpenStack credentials.
+                    type: string
+                  tenantID:
+                    description: TenantID defines the ID of the OpenStack tenant.
+                    type: string
+                  vmID:
+                    description: VMID defines the ID of the Virtual Machine in OpenStack
+                      to target.
+                    type: string
+                  volumeID:
+                    description: VolumeID indicates the ID of the volume. Needed in
+                      volume-detach.
+                    type: string
+                required:
+                - action
+                - authURL
+                - tenantID
+                - vmID
+                type: object
               physicalmachineChaos:
                 description: PhysicalMachineChaosSpec defines the desired state of
                   PhysicalMachineChaos
@@ -4750,6 +4794,52 @@ spec:
                     - action
                     - mode
                     - selector
+                    type: object
+                  openstackChaos:
+                    description: OpenStackChaosSpec is the content of the specification
+                      for an OpenStackChaos
+                    properties:
+                      action:
+                        description: 'Action defines the specific OpenStack chaos
+                          action. Supported action: vm-stop / vm-restart / volume-detach
+                          Default action: vm-stop'
+                        enum:
+                        - vm-stop
+                        - vm-restart
+                        - volume-detach
+                        type: string
+                      authURL:
+                        description: AuthURL defines the URL for authentication in
+                          OpenStack.
+                        type: string
+                      duration:
+                        description: Duration represents the duration of the chaos
+                          action.
+                        type: string
+                      remoteCluster:
+                        description: RemoteCluster represents the remote cluster where
+                          the chaos will be deployed
+                        type: string
+                      secretName:
+                        description: SecretName defines the name of kubernetes secret.
+                          It is used for OpenStack credentials.
+                        type: string
+                      tenantID:
+                        description: TenantID defines the ID of the OpenStack tenant.
+                        type: string
+                      vmID:
+                        description: VMID defines the ID of the Virtual Machine in
+                          OpenStack to target.
+                        type: string
+                      volumeID:
+                        description: VolumeID indicates the ID of the volume. Needed
+                          in volume-detach.
+                        type: string
+                    required:
+                    - action
+                    - authURL
+                    - tenantID
+                    - vmID
                     type: object
                   physicalmachineChaos:
                     description: PhysicalMachineChaosSpec defines the desired state
@@ -8223,6 +8313,53 @@ spec:
                               - mode
                               - selector
                               type: object
+                            openstackChaos:
+                              description: OpenStackChaosSpec is the content of the
+                                specification for an OpenStackChaos
+                              properties:
+                                action:
+                                  description: 'Action defines the specific OpenStack
+                                    chaos action. Supported action: vm-stop / vm-restart
+                                    / volume-detach Default action: vm-stop'
+                                  enum:
+                                  - vm-stop
+                                  - vm-restart
+                                  - volume-detach
+                                  type: string
+                                authURL:
+                                  description: AuthURL defines the URL for authentication
+                                    in OpenStack.
+                                  type: string
+                                duration:
+                                  description: Duration represents the duration of
+                                    the chaos action.
+                                  type: string
+                                remoteCluster:
+                                  description: RemoteCluster represents the remote
+                                    cluster where the chaos will be deployed
+                                  type: string
+                                secretName:
+                                  description: SecretName defines the name of kubernetes
+                                    secret. It is used for OpenStack credentials.
+                                  type: string
+                                tenantID:
+                                  description: TenantID defines the ID of the OpenStack
+                                    tenant.
+                                  type: string
+                                vmID:
+                                  description: VMID defines the ID of the Virtual
+                                    Machine in OpenStack to target.
+                                  type: string
+                                volumeID:
+                                  description: VolumeID indicates the ID of the volume.
+                                    Needed in volume-detach.
+                                  type: string
+                              required:
+                              - action
+                              - authURL
+                              - tenantID
+                              - vmID
+                              type: object
                             physicalmachineChaos:
                               description: PhysicalMachineChaosSpec defines the desired
                                 state of PhysicalMachineChaos
@@ -11461,6 +11598,55 @@ spec:
                                   - action
                                   - mode
                                   - selector
+                                  type: object
+                                openstackChaos:
+                                  description: OpenStackChaosSpec is the content of
+                                    the specification for an OpenStackChaos
+                                  properties:
+                                    action:
+                                      description: 'Action defines the specific OpenStack
+                                        chaos action. Supported action: vm-stop /
+                                        vm-restart / volume-detach Default action:
+                                        vm-stop'
+                                      enum:
+                                      - vm-stop
+                                      - vm-restart
+                                      - volume-detach
+                                      type: string
+                                    authURL:
+                                      description: AuthURL defines the URL for authentication
+                                        in OpenStack.
+                                      type: string
+                                    duration:
+                                      description: Duration represents the duration
+                                        of the chaos action.
+                                      type: string
+                                    remoteCluster:
+                                      description: RemoteCluster represents the remote
+                                        cluster where the chaos will be deployed
+                                      type: string
+                                    secretName:
+                                      description: SecretName defines the name of
+                                        kubernetes secret. It is used for OpenStack
+                                        credentials.
+                                      type: string
+                                    tenantID:
+                                      description: TenantID defines the ID of the
+                                        OpenStack tenant.
+                                      type: string
+                                    vmID:
+                                      description: VMID defines the ID of the Virtual
+                                        Machine in OpenStack to target.
+                                      type: string
+                                    volumeID:
+                                      description: VolumeID indicates the ID of the
+                                        volume. Needed in volume-detach.
+                                      type: string
+                                  required:
+                                  - action
+                                  - authURL
+                                  - tenantID
+                                  - vmID
                                   type: object
                                 physicalmachineChaos:
                                   description: PhysicalMachineChaosSpec defines the

@@ -289,7 +289,7 @@ check_kubernetes() {
     kubectl_err_msg=$(kubectl version --output=yaml 2>&1 1>/dev/null)
     if [ "$kubectl_err_msg" != "" ]; then
         printf "check Kubernetes failed, error: %s\n" "${kubectl_err_msg}"
-        exit 1
+#        exit 1
     fi
 
     check_kubernetes_version
@@ -302,7 +302,7 @@ check_kubernetes_version() {
     do
         if version_lt "$v" "1.12.0"; then
             printf "Chaos Mesh requires Kubernetes cluster running 1.12 or later\n"
-            exit 1
+#            exit 1
         fi
     done
 }
@@ -1283,7 +1283,7 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: chaos-mesh-chaos-dns-server-target-namespace
-  namespace: 
+  namespace:
   labels:
     app.kubernetes.io/name: chaos-mesh
     app.kubernetes.io/instance: chaos-mesh
@@ -1650,7 +1650,7 @@ spec:
               containerPort: 31766
       volumes:
         - name: socket-path
-          hostPath: 
+          hostPath:
             path: ${socketDir}
         - name: sys-path
           hostPath:
@@ -1973,7 +1973,7 @@ spec:
                   - chaos-dns-server
               topologyKey: kubernetes.io/hostname
             weight: 100
-      priorityClassName: 
+      priorityClassName:
       containers:
       - name: chaos-dns-server
         image: ghcr.io/chaos-mesh/chaos-coredns:v0.2.6

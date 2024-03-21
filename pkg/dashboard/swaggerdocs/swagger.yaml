@@ -3417,6 +3417,9 @@ definitions:
       networkChaos:
         $ref: '#/definitions/v1alpha1.NetworkChaosSpec'
         description: +optional
+      openstackChaos:
+        $ref: '#/definitions/v1alpha1.OpenStackChaosSpec'
+        description: +optional
       physicalmachineChaos:
         $ref: '#/definitions/v1alpha1.PhysicalMachineChaosSpec'
         description: +optional
@@ -4790,6 +4793,46 @@ definitions:
         description: only impact egress traffic to these IP addresses
         type: string
     type: object
+  v1alpha1.OpenStackChaosSpec:
+    properties:
+      action:
+        description: |-
+          Action defines the specific OpenStack chaos action.
+          Supported action: vm-stop / vm-restart / volume-detach
+          Default action: vm-stop
+          +kubebuilder:validation:Enum=vm-stop;vm-restart;volume-detach
+        type: string
+      authURL:
+        description: AuthURL defines the URL for authentication in OpenStack.
+        type: string
+      duration:
+        description: |-
+          Duration represents the duration of the chaos action.
+          +optional
+        type: string
+      remoteCluster:
+        description: |-
+          RemoteCluster represents the remote cluster where the chaos will be deployed
+          +optional
+        type: string
+      secretName:
+        description: |-
+          SecretName defines the name of kubernetes secret. It is used for OpenStack credentials.
+          +optional
+        type: string
+      tenantID:
+        description: TenantID defines the ID of the OpenStack tenant.
+        type: string
+      vmID:
+        description: VMID defines the ID of the Virtual Machine in OpenStack to target.
+        type: string
+      volumeID:
+        description: |-
+          VolumeID indicates the ID of the volume.
+          Needed in volume-detach.
+          +optional
+        type: string
+    type: object
   v1alpha1.PMJVMMySQLSpec:
     properties:
       database:
@@ -5744,6 +5787,9 @@ definitions:
       networkChaos:
         $ref: '#/definitions/v1alpha1.NetworkChaosSpec'
         description: +optional
+      openstackChaos:
+        $ref: '#/definitions/v1alpha1.OpenStackChaosSpec'
+        description: +optional
       physicalmachineChaos:
         $ref: '#/definitions/v1alpha1.PhysicalMachineChaosSpec'
         description: +optional
@@ -6095,6 +6141,9 @@ definitions:
         type: string
       networkChaos:
         $ref: '#/definitions/v1alpha1.NetworkChaosSpec'
+        description: +optional
+      openstackChaos:
+        $ref: '#/definitions/v1alpha1.OpenStackChaosSpec'
         description: +optional
       physicalmachineChaos:
         $ref: '#/definitions/v1alpha1.PhysicalMachineChaosSpec'

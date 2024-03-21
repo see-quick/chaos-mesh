@@ -655,6 +655,69 @@ func TestNetworkChaosListChaos(t *testing.T) {
 	chaos.ListChaos()
 }
 
+func TestOpenStackChaosIsDeleted(t *testing.T) {
+	g := NewGomegaWithT(t)
+
+	chaos := &OpenStackChaos{}
+	err := faker.FakeData(chaos)
+
+	g.Expect(err).To(BeNil())
+
+	chaos.IsDeleted()
+}
+
+func TestOpenStackChaosIsIsPaused(t *testing.T) {
+	g := NewGomegaWithT(t)
+
+	chaos := &OpenStackChaos{}
+	err := faker.FakeData(chaos)
+
+	g.Expect(err).To(BeNil())
+
+	chaos.IsPaused()
+}
+
+func TestOpenStackChaosGetDuration(t *testing.T) {
+	g := NewGomegaWithT(t)
+
+	chaos := &OpenStackChaos{}
+	err := faker.FakeData(chaos)
+
+	g.Expect(err).To(BeNil())
+
+	chaos.Spec.GetDuration()
+}
+
+func TestOpenStackChaosGetStatus(t *testing.T) {
+	g := NewGomegaWithT(t)
+
+	chaos := &OpenStackChaos{}
+	err := faker.FakeData(chaos)
+
+	g.Expect(err).To(BeNil())
+
+	chaos.GetStatus()
+}
+
+func TestOpenStackChaosGetSpecAndMetaString(t *testing.T) {
+	g := NewGomegaWithT(t)
+	chaos := &OpenStackChaos{}
+	err := faker.FakeData(chaos)
+	g.Expect(err).To(BeNil())
+	chaos.GetSpecAndMetaString()
+}
+
+func TestOpenStackChaosListChaos(t *testing.T) {
+	g := NewGomegaWithT(t)
+
+	chaos := &OpenStackChaosList{}
+	err := faker.FakeData(chaos)
+
+	g.Expect(err).To(BeNil())
+
+	chaos.ListChaos()
+}
+
 func TestPhysicalMachineChaosIsDeleted(t *testing.T) {
 	g := NewGomegaWithT(t)
 

@@ -5169,6 +5169,10 @@
                     "description": "+optional",
                     "$ref": "#/definitions/v1alpha1.NetworkChaosSpec"
                 },
+                "openstackChaos": {
+                    "description": "+optional",
+                    "$ref": "#/definitions/v1alpha1.OpenStackChaosSpec"
+                },
                 "physicalmachineChaos": {
                     "description": "+optional",
                     "$ref": "#/definitions/v1alpha1.PhysicalMachineChaosSpec"
@@ -6553,6 +6557,43 @@
                 }
             }
         },
+        "v1alpha1.OpenStackChaosSpec": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "description": "Action defines the specific OpenStack chaos action.\nSupported action: vm-stop / vm-restart / volume-detach\nDefault action: vm-stop\n+kubebuilder:validation:Enum=vm-stop;vm-restart;volume-detach",
+                    "type": "string"
+                },
+                "authURL": {
+                    "description": "AuthURL defines the URL for authentication in OpenStack.",
+                    "type": "string"
+                },
+                "duration": {
+                    "description": "Duration represents the duration of the chaos action.\n+optional",
+                    "type": "string"
+                },
+                "remoteCluster": {
+                    "description": "RemoteCluster represents the remote cluster where the chaos will be deployed\n+optional",
+                    "type": "string"
+                },
+                "secretName": {
+                    "description": "SecretName defines the name of kubernetes secret. It is used for OpenStack credentials.\n+optional",
+                    "type": "string"
+                },
+                "tenantID": {
+                    "description": "TenantID defines the ID of the OpenStack tenant.",
+                    "type": "string"
+                },
+                "vmID": {
+                    "description": "VMID defines the ID of the Virtual Machine in OpenStack to target.",
+                    "type": "string"
+                },
+                "volumeID": {
+                    "description": "VolumeID indicates the ID of the volume.\nNeeded in volume-detach.\n+optional",
+                    "type": "string"
+                }
+            }
+        },
         "v1alpha1.PMJVMMySQLSpec": {
             "type": "object",
             "properties": {
@@ -7368,6 +7409,10 @@
                     "description": "+optional",
                     "$ref": "#/definitions/v1alpha1.NetworkChaosSpec"
                 },
+                "openstackChaos": {
+                    "description": "+optional",
+                    "$ref": "#/definitions/v1alpha1.OpenStackChaosSpec"
+                },
                 "physicalmachineChaos": {
                     "description": "+optional",
                     "$ref": "#/definitions/v1alpha1.PhysicalMachineChaosSpec"
@@ -7670,6 +7715,10 @@
                 "networkChaos": {
                     "description": "+optional",
                     "$ref": "#/definitions/v1alpha1.NetworkChaosSpec"
+                },
+                "openstackChaos": {
+                    "description": "+optional",
+                    "$ref": "#/definitions/v1alpha1.OpenStackChaosSpec"
                 },
                 "physicalmachineChaos": {
                     "description": "+optional",

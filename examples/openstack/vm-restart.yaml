@@ -1,0 +1,12 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: OpenStackChaos
+metadata:
+  name: openstack-vm-restart-example
+  namespace: chaos-mesh
+spec:
+  action: vm-restart
+  secretName: openstack-credentials
+  selector:
+    vmIDs:
+      - "your-vm-id-here"
+  duration: "60s" # not sure if this is needed...
